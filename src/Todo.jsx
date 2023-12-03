@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import './Todo.css'
 
 function Todo() {
     const [tasks, setTasks] = useState([]);
@@ -13,36 +14,21 @@ function Todo() {
             };
             setTasks([...tasks, newTask]);
             setInput("");
-        }
-    };
-
-    const deleteTask = (id) => {
-        const updatedTasks = tasks.filter(task => task.id !== id);
-        setTasks(updatedTasks);
-    };
-
+        }}
     return (
-        <div>
-            <h1>To-Do List</h1>
-            <form onSubmit={addTask}>
-                <input 
-                    type="text" 
-                    value={input} 
-                    onChange={(e) => setInput(e.target.value)} 
-                />
-                <button type="submit">Add Task</button>
-            </form>
-            <ul>
-                {tasks.map((task) =>
-                (<div className='list'>
-                    
-                    <li key={task.id}>{task.text}</li>
-                    <button onClick={() => deleteTask(task.id)}>Delete</button>
-                    </div>
-                ))}
-            </ul>
-        </div>
-    )
-}
+    <div>
+        <h1>To-Do List</h1>
+         <form onSubmit={addTask}>
+            <input type="text" value={input} onChange={(e) => setInput(e.target.value)} />
+            <button type="submit">Add Task</button>
+         </form>
+         <ul>{tasks.map((task) =>
+         (<div className='list'>
+            <input type="checkbox"/>
+            <li key={task.id}>{task.text}</li>
+         </div>))}
+         </ul>
+    </div>
+)}
 
 export default Todo;
