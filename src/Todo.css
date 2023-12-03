@@ -1,4 +1,7 @@
 .list{
     display: flex;
-    align-self: auto;
+    align-items: auto;
+}
+.list> li{
+    list-style: none;
 }
